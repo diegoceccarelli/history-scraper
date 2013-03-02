@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-import json,urllib
+import urllib
 import codecs
-from unidecode import unidecode
+
 import os
 import datetime
+import plistlib
 
 #convert mac time in unix time (microsec)
 def to_unix_date(macTime):
@@ -11,20 +12,21 @@ def to_unix_date(macTime):
  	s = int(macTime)	 
 	return 	(macEpoch + datetime.timedelta(seconds=s)).strftime("%s")+"000"
 
-os.system("plutil -convert json  $HOME/Library/Safari/History.plist -o /tmp/safari-dump.json")
+os.system("plutil -convert xml1  $HOME/Library/Safari/History.plist -o /tmp/safari-dump.xml")
 
-f = codecs.open("/tmp/safari-dump.json", "r", "utf-8")
+data = plistlib.readPlist("/tmp/safari-dump.xml")
 
-
-json_data = json.load(f)
-for rec in json_data['WebHistoryDates']:
+for rec in data['WebHistoryDates']:
 	t  = to_unix_date(float(rec["lastVisitedDate"]))
 	if ("title" in rec):
-		print t+"\t"+rec[""]+"\t"+unidecode(rec["title"])
+		try:
+			print t+"\t"+rec[""]+"\t"+rec["title"]
+		except:
+			print t+"\t"+rec[""]+"\t"+"\tNONE"
 	else: 
 		print t+"\t"+rec[""]+"\t"+"\tNONE"
 		
-os.system("rm /tmp/safari-dump.json")
+os.system("rm /tmp/safari-dump.xml")
 		
 
 
