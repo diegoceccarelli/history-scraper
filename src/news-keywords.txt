@@ -1,0 +1,9 @@
+repubblica
+ilfattoquotidiano
+corriere
+tirreno
+news
+ilsole24ore
+internazionale
+nytimes
+telegraph
