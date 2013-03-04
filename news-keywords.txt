@@ -7,3 +7,7 @@ ilsole24ore
 internazionale
 nytimes
 telegraph
+unita
+lastampa
+libero
+
