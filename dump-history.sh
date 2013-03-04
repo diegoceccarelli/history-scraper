@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
+
 DUMP=history-dump.tsv
-CHROME_HISTORY="$HOME/Library/Application Support/Google/Chrome/Default/History"
 SAFARI_HISTORY=$HOME/Library/Safari/History.plist
 
 if [ -f  "$DUMP" ]
@@ -8,17 +8,11 @@ if [ -f  "$DUMP" ]
 fi
 
 chmod +x *sh *py
-if [ -f  "$CHROME_HISTORY" ]
-	then
-	echo "dumping chrome history"
-	./chrome.sh >> $DUMP
-fi
 
-if [ -f  $HOME/Library/Application\ Support/Firefox/Profiles/*/places.sqlite ]
-	then
-	echo "dumping firefox history"
-	./firefox.sh >> $DUMP
-fi
+echo "dumping chrome history"
+./chrome.sh >> $DUMP
+echo "dumping firefox history"
+./firefox.sh >> $DUMP
 
 if [ -f  $SAFARI_HISTORY ]
 	then

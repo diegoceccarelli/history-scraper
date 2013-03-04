@@ -19,7 +19,11 @@ o = open(options.output, "w")
 urls = {} 
 
 for line in f:
-	u = urlparse(line.split("\t")[1])
+	try:
+		u = urlparse(line.split("\t")[1])
+	except:
+		print "error parsing ",line
+		continue
 	domain = u.netloc.replace("www.","");
 	if (domain in urls):
 		urls[domain] = urls[domain]+1
