@@ -1,9 +1,9 @@
 History Scraper
 ===============
 
-History Scraper retrieves the history from chrome, safari and firefox (on MACOSX).
+History Scraper retrieves the history from chrome (linux, mac), safari (mac) and firefox (linux, mac).
 
-	./dump_history.sh
+	make dump
 
 produces three files: 
 	
@@ -16,7 +16,7 @@ domains related to other topics.
 
 Once you have checked your domains.tsv file (you can add or remove domains to the list), run:
 
-	./filter-history.sh
+	make filter
 	
 to produce a subset of your history to share. 
 
