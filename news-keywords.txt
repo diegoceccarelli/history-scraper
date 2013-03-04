@@ -10,4 +10,8 @@ telegraph
 unita
 lastampa
 libero
-
+messaggero
+giornale
+avvenire
+iltempo
+ilmanifesto
